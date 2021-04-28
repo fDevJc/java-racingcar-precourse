@@ -6,4 +6,8 @@ public class ValidationChecker {
     public boolean isGreaterThanZero(int number) {
         return number > 0;
     }
+
+    public boolean isEmptyString(String string) {
+        return string.trim().isEmpty();
+    }
 }
