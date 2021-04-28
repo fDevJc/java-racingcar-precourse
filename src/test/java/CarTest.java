@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -5,11 +6,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
+    private Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car("yang");
+    }
+
     @Test
-    @DisplayName("차의 이름을 가져온다")
+    @DisplayName("자동차의 이름을 가져온다")
     void getCarName() {
-        Car car = new Car("yang");
         String carName = car.getCarName();
         assertThat(carName).isEqualTo("yang");
+    }
+
+    @Test
+    @DisplayName("자동차의 이동거리를 가져온다")
+    void getCarDistance() {
+        assertThat(car.getDistance()).isEqualTo(0);
+        car.moveForward();
+        assertThat(car.getDistance()).isEqualTo(1);
     }
 }
