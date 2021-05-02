@@ -27,4 +27,18 @@ public class CarTest {
         car.moveForward();
         assertThat(car.getDistance()).isEqualTo(1);
     }
+
+    @Test
+    void judgeMove() {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        int randomNumber = randomNumberGenerator.getRandomNumber(0,9);
+        boolean isMove = car.judgeMove();
+        System.out.println(randomNumber);
+        if (randomNumber > 4){
+            assertThat(isMove).isTrue();
+        }else{
+            assertThat(isMove).isFalse();
+        }
+
+    }
 }

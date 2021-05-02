@@ -8,14 +8,20 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName;
+        return this.carName;
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
     }
 
     public void moveForward() {
-        distance += 1;
+        if(judgeMove()){
+            distance += 1;
+        }
+    }
+
+    public boolean judgeMove() {
+        return new RandomNumberGenerator().getRandomNumber(0,9) >= 4;
     }
 }
