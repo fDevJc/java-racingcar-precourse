@@ -1,5 +1,5 @@
 public class ValidationChecker {
-    public Boolean validNumber(String number) {
+    public Boolean validateNumber(String number) {
         return number.matches("^[0-9]+$");
     }
 

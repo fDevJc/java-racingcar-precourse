@@ -16,9 +16,9 @@ public class ValidationCheckerTest {
     @Test
     @DisplayName("입력값이 숫자인지 확인")
     void validNumber () {
-        assertThat(validationChecker.validNumber("123")).isTrue();
-        assertThat(validationChecker.validNumber("1q2w3e")).isFalse();
-        assertThat(validationChecker.validNumber("asd")).isFalse();
+        assertThat(validationChecker.validateNumber("123")).isTrue();
+        assertThat(validationChecker.validateNumber("1q2w3e")).isFalse();
+        assertThat(validationChecker.validateNumber("asd")).isFalse();
     }
 
     @Test
