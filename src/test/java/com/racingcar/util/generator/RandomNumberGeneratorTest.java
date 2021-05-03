@@ -1,3 +1,6 @@
+package com.racingcar.util.generator;
+
+import com.racingcar.util.generator.RandomNumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

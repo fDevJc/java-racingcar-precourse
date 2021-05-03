@@ -1,3 +1,5 @@
+package com.racingcar.util.generator;
+
 import java.util.Random;
 
 public class RandomNumberGenerator {

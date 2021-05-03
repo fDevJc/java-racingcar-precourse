@@ -1,3 +1,5 @@
+package com.racingcar.util.validator;
+
 public class ValidationChecker {
     public Boolean validateNumber(String number) {
         return number.matches("^[0-9]+$");

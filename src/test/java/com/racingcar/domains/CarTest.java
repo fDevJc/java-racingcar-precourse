@@ -1,3 +1,7 @@
+package com.racingcar.domains;
+
+import com.racingcar.domains.Car;
+import com.racingcar.util.generator.RandomNumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

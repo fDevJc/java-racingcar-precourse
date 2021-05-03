@@ -1,10 +1,15 @@
+package com.racingcar.domains;
+
+import com.racingcar.ui.OutputUI;
+import com.racingcar.util.validator.ValidationChecker;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
     private List<Car> cars;
 
-    public Cars(String carNames) {
+    public Cars(String carNames) throws IllegalArgumentException{
         validateNumberOfCars(carNames);
         validateNumberOfCarNameCharacter(carNames);
         cars = new ArrayList<>();
@@ -28,13 +33,13 @@ public class Cars {
         }
     }
 
-    public void moveForward(){
-        for(Car car : cars){
+    public void moveForward() {
+        for (Car car : cars){
             car.moveForward();
         }
     }
 
-    public void printDistance(){
+    public void printDistance() {
         for (Car car : cars ) {
             OutputUI.printCarDistance(car.getCarName(),car.getDistance());
         }

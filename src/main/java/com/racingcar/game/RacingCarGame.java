@@ -1,30 +1,44 @@
-public class RacingCarGame {
+package com.racingcar.game;
+
+import com.racingcar.domains.Cars;
+import com.racingcar.ui.InputUI;
+import com.racingcar.ui.OutputUI;
+
+public class RacingCarGame implements Game{
     int moveCycleCount;
     Cars cars;
 
+    @Override
     public void execute(){
         init();
         play();
     }
+
     private void play() {
-        System.out.println("실행결과");
+        OutputUI.printExecutionResult();
         for (int i = 1; i <= moveCycleCount; i++) {
             cars.moveForward();
             cars.printDistance();
         }
         cars.getMaxDistanceCar();
     }
+
     private void init() {
-        makeCars(receiveCarNames());
-        receiveMoveCycleCount();
+        try{
+            makeCars(receiveCarNames());
+            receiveMoveCycleCount();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            init();
+        }
     }
 
-    public String receiveCarNames() {
+    private String receiveCarNames() {
         OutputUI.printInputCarNames();
         return InputUI.receiveCarNames();
     }
 
-    public void receiveMoveCycleCount(){
+    private void receiveMoveCycleCount() {
         OutputUI.printInputMoveCycleCount();
         moveCycleCount = InputUI.receiveMoveCycleCount();
     }
