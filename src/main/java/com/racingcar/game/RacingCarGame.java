@@ -4,12 +4,11 @@ import com.racingcar.domains.Cars;
 import com.racingcar.ui.InputUI;
 import com.racingcar.ui.OutputUI;
 
-public class RacingCarGame implements Game{
+public class RacingCarGame {
     int moveCycleCount;
     Cars cars;
 
-    @Override
-    public void execute(){
+    public void execute() {
         init();
         play();
     }
@@ -20,15 +19,15 @@ public class RacingCarGame implements Game{
             cars.moveForward();
             cars.printDistance();
         }
-        cars.getMaxDistanceCar();
+        OutputUI.printWinners(cars.getMaxDistanceCarNames());
     }
 
     private void init() {
-        try{
+        try {
             makeCars(receiveCarNames());
             receiveMoveCycleCount();
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            OutputUI.print(e.getMessage());
             init();
         }
     }
