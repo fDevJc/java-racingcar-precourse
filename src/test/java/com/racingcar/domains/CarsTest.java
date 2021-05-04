@@ -1,16 +1,14 @@
 package com.racingcar.domains;
 
-import com.racingcar.domains.Car;
-import com.racingcar.domains.Cars;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
@@ -29,26 +27,29 @@ public class CarsTest {
     }
 
     @Test
-    void getMaxDistanceCar() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        Car car3 = new Car("car3");
+    void getMaxDistance() {
+        class Car {
+            String name;
+            int distance;
 
-        for (int i = 0; i < 5; i++) {
-            car1.moveForward();
-            car2.moveForward();
-            car3.moveForward();
+            Car (String name, int distnace) {
+                this.name = name;
+                this.distance = distnace;
+            }
+            int getDistance() {
+               return this.distance;
+            }
         }
+
+        Car car1 = new Car("car1",4);
+        Car car2 = new Car("car2",3);
+        Car car3 = new Car("car3",4);
 
         List<Car> carList = Arrays.asList(car1,car2,car3);
 
-        Car car = carList.stream().max(Comparator.comparingInt(Car::getDistance)).orElseThrow(NoSuchElementException::new);
+        int maxDistance = carList.stream().max(Comparator.comparingInt(Car::getDistance)).get().getDistance();
 
-        System.out.println(car1.getDistance());
-        System.out.println(car2.getDistance());
-        System.out.println(car3.getDistance());
-
-        System.out.println(car.getCarName());
+        assertThat(maxDistance).isEqualTo(4);
 
     }
 }

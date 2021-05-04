@@ -4,6 +4,7 @@ import com.racingcar.ui.OutputUI;
 import com.racingcar.util.validator.ValidationChecker;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -41,15 +42,23 @@ public class Cars {
 
     public void printDistance() {
         for (Car car : cars ) {
-            OutputUI.printCarDistance(car.getCarName(),car.getDistance());
+            OutputUI.printCarDistance(car.getCarName(), car.getDistance());
         }
         System.out.println();
     }
 
-    public void getMaxDistanceCar(){
-        //TODO: stream을 사용해서 뽑아보자
-        for (Car car : cars) {
-            System.out.println(car.getDistance());
-        }
+    public int getMaxDistance() {
+        return cars.stream()
+                .max(Comparator.comparingInt(Car::getDistance))
+                .get()
+                .getDistance();
+    }
+
+    public String getMaxDistanceCar() {
+        return cars.stream()
+                .filter(car -> car.getDistance() == getMaxDistance())
+                .map(Car::getCarName)
+                .reduce((prev,next) -> prev + "," + next)
+                .get();
     }
 }
