@@ -1,10 +1,12 @@
 package com.racingcar.util.generator;
 
+import com.racingcar.domains.RuleBook;
+
 import java.util.Random;
 
 public class RandomNumberGenerator {
-    public int getRandomNumber(int minValue, int maxValue) {
+    public static int getRandomNumber() {
         Random random = new Random();
-        return random.nextInt(maxValue) + minValue;
+        return random.nextInt(RuleBook.RANDOM_NUMBER_MAX_VALUE.getValue()) + RuleBook.RANDOM_NUMBER_MIN_VALUE.getValue();
     }
 }
