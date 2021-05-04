@@ -1,6 +1,5 @@
 package com.racingcar.domains;
 
-import com.racingcar.domains.Car;
 import com.racingcar.util.generator.RandomNumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,15 +33,12 @@ public class CarTest {
 
     @Test
     void judgeMove() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        int randomNumber = randomNumberGenerator.getRandomNumber(0,9);
-        boolean isMove = car.judgeMove();
-        System.out.println(randomNumber);
-        if (randomNumber > 4){
+        int randomNumber = RandomNumberGenerator.getRandomNumber();
+        boolean isMove = car.judgeMoveByRandomNumber(randomNumber);
+        if (randomNumber >= 4){
             assertThat(isMove).isTrue();
         }else{
             assertThat(isMove).isFalse();
         }
-
     }
 }

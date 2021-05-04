@@ -7,12 +7,6 @@ public class Car {
     private final String carName;
     private int distance;
 
-    private final int RANDOM_NUMBER_MAX_VALUE = 9;
-    private final int RANDOM_NUMBER_MIN_VALUE = 0;
-    private final int MOVE_FORWARD_CRITERION = 4;
-    private final int MOVE_FORWARD_UNIT = 1;
-
-
     public Car(String carName) {
         this.carName = carName;
     }
@@ -26,12 +20,12 @@ public class Car {
     }
 
     public void moveForward() {
-        if(judgeMove()){
-            distance += MOVE_FORWARD_UNIT;
+        if(judgeMoveByRandomNumber(RandomNumberGenerator.getRandomNumber())){
+            distance += RuleBook.MOVE_FORWARD_UNIT.getValue();
         }
     }
 
-    public boolean judgeMove() {
-        return new RandomNumberGenerator().getRandomNumber(RANDOM_NUMBER_MIN_VALUE,RANDOM_NUMBER_MAX_VALUE) >= MOVE_FORWARD_CRITERION;
+    public boolean judgeMoveByRandomNumber(int randomNumber) {
+        return  randomNumber >= RuleBook.MOVE_FORWARD_CRITERION.getValue();
     }
 }
