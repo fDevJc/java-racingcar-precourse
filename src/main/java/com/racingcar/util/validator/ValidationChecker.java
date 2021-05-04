@@ -1,15 +1,11 @@
 package com.racingcar.util.validator;
 
 public class ValidationChecker {
-    public Boolean validateNumber(String number) {
-        return number.matches("^[0-9]+$");
+    public static boolean isGreaterThanInput(String checkTarget,int input) {
+        return checkTarget.length() > input;
     }
 
-    public boolean isGreaterThanZero(int number) {
-        return number > 0;
-    }
-
-    public boolean isEmptyString(String string) {
+    public static boolean isEmptyString(String string) {
         return string.trim().isEmpty();
     }
 }
