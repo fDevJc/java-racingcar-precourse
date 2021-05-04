@@ -1,6 +1,7 @@
 package com.racingcar.domains;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -21,12 +22,23 @@ public class CarsTest {
 
     @Test
     void 생성자_에러_테스트() {
-        assertThrows(IllegalArgumentException.class,()->{
-           Cars exceptionCars = new Cars("");
-        });
+        assertThrows(IllegalArgumentException.class,() -> new Cars(""));
     }
 
     @Test
+    @DisplayName("자동차 빈이름 체크")
+    void validateEmptyCarName() {
+        assertThrows(IllegalArgumentException.class, () -> cars.validateEmptyCarName(""));
+    }
+
+    @Test
+    @DisplayName("자동차 5자이상 이름 체크")
+    void validateNumberOfCarNameCharacter() {
+        assertThrows(IllegalArgumentException.class, () -> cars.validateNumberOfCarNameCharacter("123456"));
+    }
+
+    @Test
+    @DisplayName("가장 긴 이동거리 확인")
     void getMaxDistance() {
         class Car {
             String name;
@@ -47,7 +59,10 @@ public class CarsTest {
 
         List<Car> carList = Arrays.asList(car1,car2,car3);
 
-        int maxDistance = carList.stream().max(Comparator.comparingInt(Car::getDistance)).get().getDistance();
+        int maxDistance = carList.stream()
+                .max(Comparator.comparingInt(Car::getDistance))
+                .get()
+                .getDistance();
 
         assertThat(maxDistance).isEqualTo(4);
 
